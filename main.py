@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 
 
 def load_env() -> str:
-    load_dotenv()
+    load_dotenv("/etc/secrets/.env")
     channelAccessToken:str = environ["channelAccessToken"]
 
     return channelAccessToken
