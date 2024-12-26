@@ -3,7 +3,7 @@ from flask import Flask,request,Response,send_file
 from json import load
 from packages.LineAPI import LineAPI
 
-from sys import exit
+#from sys import exit
 from time import sleep
 
 from os import environ,getcwd
