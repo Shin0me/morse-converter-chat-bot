@@ -76,6 +76,8 @@ def main():
         line.addCredentials(channelAccessToken)
         line.addMessage_forReply(messageType="audio",contentURL=absoluteAudioPath,audioDuration=audioDuration)
         response:object = line.sendMessage()
+        print(absoluteAudioPath)
+        print(response)
 
 
     else:
