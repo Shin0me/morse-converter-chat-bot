@@ -10,8 +10,9 @@ from os import environ,getcwd
 from os.path import join
 from dotenv import load_dotenv
 
-exportedMorseSignalsPath:str = "converted_morse_signals.mp3" #relative Path
-absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + str(join(getcwd(),exportedMorseSignalsPath))
+exportedMorseAudioName:str = "converted_morse_signals.mp3"
+relativePath:str = str(join(getcwd(),exportedMorseSignalsPath))
+absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + relativePath
 
 
 def load_env() -> str:
@@ -57,14 +58,14 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
             morseAudio += morse_space
 
     audioDuration:int = len(morseAudio)
-    morseAudio.export(exportedMorseSignalsPath,format="mp3")
-    return exportedMorseSignalsPath,audioDuration
+    morseAudio.export(exportedMorseAudioName,format="mp3")
+    return exportedMorseAudioName,audioDuration
 
 
 
 app:object = Flask(__name__)
 
-@app.route(absoluteAudioPath,methods=["GET","POST"])
+@app.route(relativePath,methods=["GET","POST"])
 def returnMorseAudio():
     return send_file(exportedMorseSignalsPath,as_attachment=True)
 
