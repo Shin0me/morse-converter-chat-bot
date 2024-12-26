@@ -70,8 +70,8 @@ def main():
         line:object = LineAPI()
         message,contentType = line.parse_POSTrequest(request.get_json())
         morseAudioPath,audioDuration = japaneseToMorseSound_converter(message.strip())
-        absoluteAudioPath:str = join("https://morse-signal-converter-bot.onrender.com",getcwd(),morseAudioPath)
-
+        absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + str(join(getcwd(),morseAudioPath))
+        
         channelAccessToken:str = load_env()
         line.addCredentials(channelAccessToken)
         line.addMessage_forReply(messageType="audio",contentURL=absoluteAudioPath,audioDuration=audioDuration)
