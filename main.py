@@ -64,9 +64,9 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
 
 app:object = Flask(__name__)
 
-@app.route("",methods=["GET","POST"])
+@app.route(absoluteAudioPath,methods=["GET","POST"])
 def returnMorseAudio():
-    return 
+    return send_file(exportedMorseSignalsPath,as_attachment=True)
 
 @app.route("/",methods=["GET","POST"])
 def main():
