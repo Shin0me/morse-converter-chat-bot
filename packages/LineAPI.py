@@ -39,7 +39,7 @@ class LineAPI:
 
         match messageType.lower():
             case "text":
-                self.body["message"] = ({
+                self.body["messages"] = ({
                     [
                 {
                     "type":"text",
@@ -47,7 +47,7 @@ class LineAPI:
                 }   ]})
 
             case "audio":
-                self.body["message"] = ([{
+                self.body["messages"] = ([{
                     "type": "audio",
                     "originalContentUrl": contentURL,
                     "duration": audioDuration
