@@ -75,7 +75,7 @@ def main():
         channelAccessToken:str = load_env()
         line.addCredentials(channelAccessToken)
         line.addMessage_forReply(messageType="audio",contentURL=absoluteAudioPath,audioDuration=audioDuration)
-        response:object = line.sendMessage()
+        response:str = line.sendMessage()
         print(absoluteAudioPath)
         print(response)
 
