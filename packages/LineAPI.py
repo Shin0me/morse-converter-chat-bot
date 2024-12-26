@@ -47,11 +47,11 @@ class LineAPI:
                 }   ]})
 
             case "audio":
-                self.body["message"] = ({
+                self.body["message"] = ([{
                     "type": "audio",
                     "originalContentUrl": contentURL,
                     "duration": audioDuration
-                    })
+                    }])
 
 
     def sendMessage(self) -> str:
