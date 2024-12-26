@@ -11,16 +11,16 @@ class LineAPI:
 
         event:dict = requestData.get("events",[{}])[0]
 
-        contentProvider:str = event["message"].get("type","")
+        contentType:str = event["message"].get("type","")
         message:str = event["message"].get("text","None").strip()
-        messageType:str = event.get("type","")
+        #messageType:str = event.get("type","")
         self.replyToken:str  = event.get("replyToken","None")
 
         self.body:dict = {
             "replyToken":self.replyToken,
         }
 
-        return message,messageType,contentProvider
+        return message,messageType,contentType
 
     def fetchRecievedFiles(self):
         pass
