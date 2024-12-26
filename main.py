@@ -68,7 +68,7 @@ def main():
 
     if request.method == "POST":
         line:object = LineAPI()
-        message,messageType,contentType = line.parse_POSTrequest(request.get_json())
+        message,contentType = line.parse_POSTrequest(request.get_json())
         morseAudioPath,audioDuration = japaneseToMorseSound_converter(message.strip())
         absoluteAudioPath:str = join(getcwd(),morseAudioPath)
 
