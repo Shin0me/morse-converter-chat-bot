@@ -67,7 +67,7 @@ app:object = Flask(__name__)
 
 @app.route(relativePath,methods=["GET","POST"])
 def returnMorseAudio():
-    return send_file(exportedMorseSignalsPath,as_attachment=True)
+    return send_file(exportedMorseAudioName,as_attachment=True)
 
 @app.route("/",methods=["GET","POST"])
 def main():
