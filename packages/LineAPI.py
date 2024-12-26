@@ -11,7 +11,7 @@ class LineAPI:
 
         event:dict = requestData.get("events",[{}])[0]
 
-        contentProvider:str = event["message"].get("contentProvider","").get("type","")
+        contentProvider:str = event["message"].get("type","")
         message:str = event["message"].get("text","None").strip()
         messageType:str = event.get("type","")
         self.replyToken:str  = event.get("replyToken","None")
