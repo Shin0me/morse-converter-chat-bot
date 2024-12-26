@@ -10,6 +10,8 @@ from os import environ,getcwd
 from os.path import join
 from dotenv import load_dotenv
 
+exportedMorseSignalsPath:str = "converted_morse_signals.mp3" #relative Path
+absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + str(join(getcwd(),morseAudioPath))
 
 
 def load_env() -> str:
@@ -20,7 +22,6 @@ def load_env() -> str:
 
 
 def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
-    exportedMorseSignalsPath:str = "converted_morse_signals.mp3"
     morseAudio:object = AudioSegment.silent(duration=0)
     morseTable:dict = {}
     singleUnitDuration:int =  60 # *0.001 sec
@@ -63,6 +64,10 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
 
 app:object = Flask(__name__)
 
+@app.route("",methods=["GET","POST"])
+def returnMorseAudio():
+    return 
+
 @app.route("/",methods=["GET","POST"])
 def main():
 
@@ -70,7 +75,6 @@ def main():
         line:object = LineAPI()
         message,contentType = line.parse_POSTrequest(request.get_json())
         morseAudioPath,audioDuration = japaneseToMorseSound_converter(message.strip())
-        absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + str(join(getcwd(),morseAudioPath))
         
         channelAccessToken:str = load_env()
         line.addCredentials(channelAccessToken)
@@ -84,7 +88,6 @@ def main():
         pass
         """ requestMessage:str = str(request.args.get("message"," "))
         morseAudioPath,audioDuration = japaneseToMorseSound_converter(requestMessage.strip())
-        absoluteAudioPath:str = join(getcwd(),morseAudioPath)
         print("This method is not allowed. POST is only accessible.")
         return send_file(absoluteAudioPath)"""
 
