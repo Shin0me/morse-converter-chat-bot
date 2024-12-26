@@ -20,7 +20,7 @@ class LineAPI:
             "replyToken":self.replyToken,
         }
 
-        return message,messageType,contentType
+        return message,contentType
 
     def fetchRecievedFiles(self):
         pass
