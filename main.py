@@ -11,7 +11,7 @@ from os.path import join
 from dotenv import load_dotenv
 
 exportedMorseSignalsPath:str = "converted_morse_signals.mp3" #relative Path
-absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + str(join(getcwd(),morseAudioPath))
+absoluteAudioPath:str = "https://morse-signal-converter-bot.onrender.com" + str(join(getcwd(),exportedMorseSignalsPath))
 
 
 def load_env() -> str:
