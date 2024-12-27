@@ -27,5 +27,28 @@
     "K": [1, 0, 1], "L": [0, 1, 0, 0], "M": [1, 1], "N": [1, 0], "O": [1, 1, 1],
     "P": [0, 1, 1, 0], "Q": [1, 1, 0, 1], "R": [0, 1, 0], "S": [0, 0, 0], "T": [1],
     "U": [0, 0, 1], "V": [0, 0, 0, 1], "W": [0, 1, 1], "X": [1, 0, 0, 1], "Y": [1, 0, 1, 1],
-    "Z": [1, 1, 0, 0]
+    "Z": [1, 1, 0, 0],
+
+    "。": [0, 0, 0, 1, 1, 0, 1],   # Full stop (Japanese period)
+    "、": [0, 1, 0, 1, 0, 0],     # Japanese comma
+    "ー": [1, 0, 0, 1, 1],       # Japanese prolonged sound mark
+    "？": [0, 0, 1, 1, 0, 0],    # Question mark
+    "！": [1, 0, 1, 0, 1, 1],    # Exclamation mark
+    "「": [0, 1, 0, 0, 1],       # Opening bracket
+    "」": [0, 0, 1, 0, 1],       # Closing bracket
+    "『": [0, 1, 0, 0, 1, 0],    # Opening quotation mark
+    "』": [0, 0, 1, 0, 1, 0],    # Closing quotation mark
+    "…": [0, 0, 0, 0, 0, 0],    # Ellipsis
+    "ー": [1, 0, 0, 1, 1],       # Dash or long vowel mark
+    "-": [1, 0, 0, 0, 0, 1],    # Hyphen
+    "/": [1, 0, 0, 1, 0],       # Slash
+    "(": [1, 0, 1, 1, 0],       # Opening parenthesis
+    ")": [1, 0, 1, 1, 0, 1],    # Closing parenthesis
+    "&": [0, 1, 0, 0, 0],       # Ampersand
+    ":": [1, 1, 1, 0, 0, 0],    # Colon
+    ";": [1, 0, 1, 0, 1, 0],    # Semicolon
+    "'": [0, 1, 1, 1, 1, 0],    # Apostrophe
+    "\"": [0, 1, 0, 0, 1, 0],   # Quotation mark
+    "$": [0, 0, 0, 1, 0, 0, 1], # Dollar sign
+    "@": [0, 1, 1, 0, 1, 0]     # At symbol
 }
