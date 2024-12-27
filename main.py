@@ -25,7 +25,7 @@ def load_env() -> str:
 def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
     morseAudio:object = AudioSegment.silent(duration=0)
     morseTable:dict = {}
-    singleUnitDuration:int =  60 # *0.001 sec
+    singleUnitDuration:int =  180 # *0.001 sec
 
     print("loading morse signal assets")
     morse_long:object = AudioSegment.from_file("morse_long.mp3") #!   0.18 sec
