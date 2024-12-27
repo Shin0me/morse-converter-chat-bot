@@ -22,7 +22,7 @@ def load_env() -> str:
     return channelAccessToken
 
 
-def japaneseToMorseSound_converter(message:str) -> tuple[str,int,int]:
+def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
     morseAudio:object = AudioSegment.silent(duration=0)
     morseTable:dict = {}
     singleUnitDuration:int =  60 # *0.001 sec
