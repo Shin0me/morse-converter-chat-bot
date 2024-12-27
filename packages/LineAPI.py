@@ -7,13 +7,12 @@ class LineAPI:
     def __init__(self):
         pass
 
-    def parse_POSTrequest(self,requestData:dict) -> tuple[str,str,str]:
+    def parse_POSTrequest(self,requestData:dict) -> tuple[str,str]:
 
         event:dict = requestData.get("events",[{}])[0]
 
         contentType:str = event["message"].get("type","")
         message:str = event["message"].get("text","None").strip()
-        #messageType:str = event.get("type","")
         self.replyToken:str  = event.get("replyToken","None")
 
         self.body:dict = {

@@ -22,7 +22,7 @@ def load_env() -> str:
     return channelAccessToken
 
 
-def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
+def japaneseToMorseSound_converter(message:str) -> tuple[str,int,int]:
     morseAudio:object = AudioSegment.silent(duration=0)
     morseTable:dict = {}
     singleUnitDuration:int =  60 # *0.001 sec
@@ -38,15 +38,16 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
         morseTable = load(f)
 
     if not message:
-        print("text should be written in the message!!")
-        return
+        print("Request should not be blank")
+        return None,None,404
 
     print(f"requestedMessage:{message}")
 
     for index,letter in enumerate(message):
-        morseList:list  =morseTable.get(letter,[])
+        morseList:list  = morseTable.get(letter,[])
         if len(morseList) == 0:
-            return
+            print("Request text includes an invalid character")
+            return None,None,403
 
         print(f"Now generating morse signals for {letter}({index+1}/{len(message)})")
         for signal in morseList:
@@ -81,7 +82,7 @@ def main():
     if request.method == "POST":
         line:object = LineAPI()
         message,contentType = line.parse_POSTrequest(request.get_json())
-        morseAudioPath,audioDuration = japaneseToMorseSound_converter(message.strip())
+        morseAudioPath,audioDuration = japaneseToMorseSound_converter(message.strip().upper())
 
         channelAccessToken:str = load_env()
         line.addCredentials(channelAccessToken)
@@ -92,11 +93,7 @@ def main():
 
 
     else:
-        pass
-        """ requestMessage:str = str(request.args.get("message"," "))
-        morseAudioPath,audioDuration = japaneseToMorseSound_converter(requestMessage.strip())
-        print("This method is not allowed. POST is only accessible.")
-        return send_file(absoluteAudioPath)"""
+        return "GET method is not available.\nTry POST method from the LINE official bot: 'https://lin.ee/zTGOWML'"
 
     return Response(status=200)
 
