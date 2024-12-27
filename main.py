@@ -31,7 +31,7 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
     morse_long:object = AudioSegment.from_file("morse_long.mp3") #!   0.18 sec
     morse_short:object = AudioSegment.from_file("morse_short.mp3")#!  0.06 sec
     morseSignals:list = [morse_short,morse_long]
-    morse_space:object = AudioSegment.silent(duration=singleUnitDuration) #! 0.06 sec
+    morse_space:object = AudioSegment.silent(duration=singleUnitDuration) #! 0.18 sec
 
     print("loading japanese-morse conversion table")
     with open("japanese-morse_table.json","r",encoding="utf-8") as f:
@@ -65,9 +65,15 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
 
 app:object = Flask(__name__)
 
+@app.route("/app_script/wakeup",methods=["GET"])
+def wakeUpCallHandling():
+    return Response(status=200)
+
+
 @app.route(relativePath,methods=["GET","POST"])
 def returnMorseAudio():
     return send_file(exportedMorseAudioName,as_attachment=True)
+
 
 @app.route("/",methods=["GET","POST"])
 def main():
@@ -76,7 +82,7 @@ def main():
         line:object = LineAPI()
         message,contentType = line.parse_POSTrequest(request.get_json())
         morseAudioPath,audioDuration = japaneseToMorseSound_converter(message.strip())
-        
+
         channelAccessToken:str = load_env()
         line.addCredentials(channelAccessToken)
         line.addMessage_forReply(messageType="audio",contentURL=absoluteAudioPath,audioDuration=audioDuration)
