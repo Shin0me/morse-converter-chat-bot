@@ -7,6 +7,7 @@ class LineAPI:
     def __init__(self):
         pass
 
+
     def parse_POSTrequest(self,requestData:dict) -> tuple[str,str]:
 
         event:dict = requestData.get("events",[{}])[0]
@@ -56,6 +57,7 @@ class LineAPI:
     def sendMessage(self) -> str:
         response = req.post(url=replyUrl,headers=self.header,json=self.body)
         return response.text
+
 
 if __name__ == "__main__":
     line:object = LineAPI()

@@ -1,0 +1,3 @@
+
+class RequestMessageEmptyError(Exception):
+    pass
