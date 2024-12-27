@@ -39,8 +39,7 @@ class LineAPI:
 
         match messageType.lower():
             case "text":
-                self.body["messages"] = ([
-                {
+                self.body["messages"] = ([{
                     "type":"text",
                     "text":message
                 }])
