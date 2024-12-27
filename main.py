@@ -39,7 +39,7 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
 
     if not message:
         print("Request should not be blank")
-        return None,None,404
+        return None,None
 
     print(f"requestedMessage:{message}")
 
@@ -47,7 +47,7 @@ def japaneseToMorseSound_converter(message:str) -> tuple[str,int]:
         morseList:list  = morseTable.get(letter,[])
         if len(morseList) == 0:
             print("Request text includes an invalid character")
-            return None,None,403
+            return None,None
 
         print(f"Now generating morse signals for {letter}({index+1}/{len(message)})")
         for signal in morseList:
